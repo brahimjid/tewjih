@@ -5,6 +5,7 @@ use App\Http\Controllers\FiliereController;
 use App\Http\Controllers\MatiereController;
 use App\Http\Controllers\NoteMoyenneController;
 use App\Models\CoefOrientation;
+use App\Models\Etudiant;
 use App\Models\Orientation_Filiere;
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +14,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    dd(Orientation_Filiere::with('filiere')->get());
+
+    foreach (Etudiant::all() as $item) {
+         dump($item->mo());
+    }
     return view('dashboard');
 })->name('dashboard');
 
