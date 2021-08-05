@@ -31,14 +31,17 @@ class Etudiant extends Model
 
      }
 
-
+    public function choix()
+    {
+    return $this->hasMany(EtudiantChoix::class);
+    }
 
     public function mo()
     {
           $sum_mo = 0;
          foreach ($this->noteMoyenne()->get() as $note){
-             if ($this->coeff($note->id_matiere)>0){
-             $sum_mo += $note->notemoyenne * $this->coeff($note->id_matiere);
+             if ($this->coeff_Filiere($note->id_matiere)>0){
+             $sum_mo += $note->notemoyenne * $this->coeff_Filiere($note->id_matiere);
              }
          }
            $sum_n = $sum_mo + $this->mg();
@@ -47,9 +50,8 @@ class Etudiant extends Model
         return $sum_n/$sum_coef;
     }
 
-    public function coeff($id)
+    public function coeff_Filiere($id)
     {
-
         $mat =MatiereOrientation::where("matiere_id",$id)->where("filiere_id",$this->filiere->id)->first();
         if (!$mat){
             return 0;

@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-
-    foreach (Etudiant::all() as $item) {
-         dump($item->mo());
-    }
+    dd(Etudiant::find(1)->choix);
+//    foreach (Etudiant::all() as $item) {
+//         dump($item->mo());
+//    }
     return view('dashboard');
 })->name('dashboard');
 
@@ -33,5 +33,10 @@ Route::resource('filieres' , FiliereController::class);
 Route::resource('notes', NoteMoyenneController::class);
 Route::get('/matieres_orientation/create',[MatiereController::class,'MatiereOrientationCreate'])->name('matieres.orientation.create');
 Route::get('/matieres_orientation',[MatiereController::class,'getMatiereOrientation'])->name('matieres.orientation.index');
+Route::post('/matieres_orientation/store',[MatiereController::class,'storeMatiereOrientation'])->name('matieres.orientation.store');
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

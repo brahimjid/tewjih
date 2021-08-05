@@ -9,6 +9,10 @@ class MatiereOrientation extends Model
 {
     use HasFactory;
 
+    public $timestamps =false;
+
+      protected $fillable = ['matiere_id','filiere_id','coef'];
+
     public function filiere()
     {
         return $this->belongsTo(Filiere::class,'filiere_id');

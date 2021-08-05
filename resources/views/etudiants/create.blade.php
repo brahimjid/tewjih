@@ -50,12 +50,6 @@
                                 <small class="invalid-feedback">{{$message}}</small>
                                 @enderror
                             </div>
-                            <select class="selectpicker">
-                                <option>Mustard</option>
-                                <option>Ketchup</option>
-                                <option>Relish</option>
-                            </select>
-
                             <div class="form-group col-12 col-md-6">
                                 <label for="filiere">Filiere</label>
                                 <select  class="@error('filiere') is-invalid @enderror form-control"

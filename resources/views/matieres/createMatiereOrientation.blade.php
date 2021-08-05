@@ -5,7 +5,7 @@
     <div class="container">
 
         <div class="card">
-            <form action="{{route('matieres.store')}}" method="post">
+            <form action="{{route('matieres.orientation.store')}}" method="post">
                 @csrf
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
